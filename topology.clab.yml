@@ -15,7 +15,6 @@ topology:
     arista_ceos:
       image: arista/ceos:latest
       env:
-        CLAB_MGMT_VRF: MGMT
         INTFTYPE: et
     linux:
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.7
