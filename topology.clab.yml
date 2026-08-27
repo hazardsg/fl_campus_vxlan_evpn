@@ -96,6 +96,7 @@ topology:
         IPV4: 10.1.101.10/24
         GW: 10.1.101.1
         UPLINK_MAC: 00:01:01:00:00:01
+        STATIC_ROUTE: 10.0.0.0/8
     host2:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -103,6 +104,7 @@ topology:
         IPV4: 10.1.201.10/24
         GW: 10.1.201.1
         UPLINK_MAC: 00:01:01:00:00:02
+        STATIC_ROUTE: 10.0.0.0/8
     host4:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -110,6 +112,7 @@ topology:
         IPV4: 10.2.101.10/24
         GW: 10.2.101.1
         UPLINK_MAC: 00:01:01:00:00:04
+        STATIC_ROUTE: 10.0.0.0/8
     host5:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -117,6 +120,7 @@ topology:
         IPV4: 10.2.201.10/24
         GW: 10.2.201.1
         UPLINK_MAC: 00:01:01:00:00:05
+        STATIC_ROUTE: 10.0.0.0/8
     server-1:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -125,6 +129,7 @@ topology:
         GW: 10.3.100.1
         UPLINK_MAC: 00:01:01:00:00:07
         TMODE: lacp
+        STATIC_ROUTE: 10.0.0.0/8
     guest1:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -132,6 +137,7 @@ topology:
         IPV4: 10.0.255.10/24
         GW: 10.0.255.1
         UPLINK_MAC: 00:01:01:00:00:03
+        STATIC_ROUTE: 10.0.0.0/8
     guest2:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -139,6 +145,7 @@ topology:
         IPV4: 10.0.255.11/24
         GW: 10.0.255.1
         UPLINK_MAC: 00:01:01:00:00:06
+        STATIC_ROUTE: 10.0.0.0/8
     dmz-server:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -147,6 +154,7 @@ topology:
         GW: 10.0.255.1
         UPLINK_MAC: 00:01:01:00:00:08
         TMODE: lacp
+        STATIC_ROUTE: 10.0.0.0/8
   links:
     [
       { endpoints: [ "bld3-core-1:et1", "bld1-dist-1:et1" ] },
