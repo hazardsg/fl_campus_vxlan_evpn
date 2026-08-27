@@ -1,0 +1,51 @@
+---
+### group_vars/CAMPUS_DIST.yml
+# Distribution switches — underlay L3 transit only.
+# vtep: false  →  no VXLAN interface generated
+# evpn_role: none  →  no EVPN overlay participation
+
+type: l3leaf
+
+l3leaf:
+  defaults:
+    platform: cEOSLab
+    loopback_ipv4_pool: 10.255.0.32/27
+    uplink_switches: [bld3-core-1, bld3-core-2]
+    uplink_interfaces: [Ethernet1, Ethernet2]
+    uplink_ipv4_pool: 10.255.255.0/27
+    vtep: false
+    evpn_role: none
+    spanning_tree_mode: none
+
+  node_groups:
+    - group: BLD1-DIST-1
+      bgp_as: 65201
+      nodes:
+        - name: bld1-dist-1
+          id: 1
+          mgmt_ip: 172.100.100.11/24
+          uplink_switch_interfaces: [Ethernet1, Ethernet1]
+
+    - group: BLD1-DIST-2
+      bgp_as: 65202
+      nodes:
+        - name: bld1-dist-2
+          id: 2
+          mgmt_ip: 172.100.100.12/24
+          uplink_switch_interfaces: [Ethernet2, Ethernet2]
+
+    - group: BLD2-DIST-1
+      bgp_as: 65203
+      nodes:
+        - name: bld2-dist-1
+          id: 3
+          mgmt_ip: 172.100.100.13/24
+          uplink_switch_interfaces: [Ethernet3, Ethernet3]
+
+    - group: BLD2-DIST-2
+      bgp_as: 65204
+      nodes:
+        - name: bld2-dist-2
+          id: 4
+          mgmt_ip: 172.100.100.14/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet4]

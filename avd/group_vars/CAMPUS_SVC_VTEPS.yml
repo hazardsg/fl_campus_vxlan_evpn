@@ -1,0 +1,40 @@
+---
+### group_vars/CAMPUS_SVC_VTEPS.yml
+# Shared services VTEPs — single-node per switch, EVPN ESI multi-homing for servers.
+# No MLAG between svc-1 and svc-2 (no peer-link in topology).
+# Servers use LACP bonding — EOS uses EVPN ESI active-active per port-channel.
+
+type: l3leaf
+
+l3leaf:
+  defaults:
+    platform: cEOSLab
+    loopback_ipv4_pool: 10.255.0.96/27
+    vtep_loopback_ipv4_pool: 10.255.1.32/27
+    uplink_switches: [bld3-core-1, bld3-core-2]
+    uplink_interfaces: [Ethernet1, Ethernet2]
+    uplink_ipv4_pool: 10.255.255.64/27
+    virtual_router_mac_address: 00:1c:73:00:00:99
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 16384
+
+  node_groups:
+    - group: BLD3-SVC-1
+      bgp_as: 65301
+      nodes:
+        - name: bld3-svc-1
+          id: 1
+          mgmt_ip: 172.100.100.31/24
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
+          filter:
+            tags: [bld3-svc]
+
+    - group: BLD3-SVC-2
+      bgp_as: 65302
+      nodes:
+        - name: bld3-svc-2
+          id: 2
+          mgmt_ip: 172.100.100.32/24
+          uplink_switch_interfaces: [Ethernet6, Ethernet6]
+          filter:
+            tags: [bld3-svc]

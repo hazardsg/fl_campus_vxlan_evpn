@@ -1,0 +1,49 @@
+# inventory.yml
+CAMPUS_FABRIC:
+  children:
+    CAMPUS:
+      children:
+        CAMPUS_SPINES:
+          hosts:
+            bld3-core-1:
+              ansible_host: 172.100.100.2
+            bld3-core-2:
+              ansible_host: 172.100.100.3
+        CAMPUS_DIST:
+          hosts:
+            bld1-dist-1:
+              ansible_host: 172.100.100.11
+            bld1-dist-2:
+              ansible_host: 172.100.100.12
+            bld2-dist-1:
+              ansible_host: 172.100.100.13
+            bld2-dist-2:
+              ansible_host: 172.100.100.14
+        CAMPUS_IDF_VTEPS:
+          hosts:
+            bld1-fl1-idf:
+              ansible_host: 172.100.100.21
+            bld1-fl2-idf:
+              ansible_host: 172.100.100.22
+            bld1-fl3-idf:
+              ansible_host: 172.100.100.23
+            bld2-fl1-idf:
+              ansible_host: 172.100.100.24
+            bld2-fl2-idf:
+              ansible_host: 172.100.100.25
+            bld2-fl3-idf:
+              ansible_host: 172.100.100.26
+        CAMPUS_SVC_VTEPS:
+          hosts:
+            bld3-svc-1:
+              ansible_host: 172.100.100.31
+            bld3-svc-2:
+              ansible_host: 172.100.100.32
+    CAMPUS_NETWORK_SERVICES:
+      children:
+        CAMPUS_IDF_VTEPS:
+        CAMPUS_SVC_VTEPS:
+    CAMPUS_ENDPOINTS:
+      children:
+        CAMPUS_IDF_VTEPS:
+        CAMPUS_SVC_VTEPS:

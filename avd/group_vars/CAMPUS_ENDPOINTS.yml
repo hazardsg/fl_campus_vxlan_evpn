@@ -1,0 +1,94 @@
+---
+### group_vars/CAMPUS_ENDPOINTS.yml
+
+servers:
+  # ── Building 1 hosts (single uplinks, no bonding) ──────────────────────────
+  - name: host1
+    rack: BLD1-FL1
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld1-fl1-idf]
+        vlans: 101
+        mode: access
+        spanning_tree_portfast: edge
+
+  - name: host2
+    rack: BLD1-FL2
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld1-fl2-idf]
+        vlans: 201
+        mode: access
+        spanning_tree_portfast: edge
+
+  - name: guest1
+    rack: BLD1-FL3
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld1-fl3-idf]
+        vlans: 255
+        mode: access
+        spanning_tree_portfast: edge
+
+  # ── Building 2 hosts (single uplinks, no bonding) ──────────────────────────
+  - name: host4
+    rack: BLD2-FL1
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld2-fl1-idf]
+        vlans: 102
+        mode: access
+        spanning_tree_portfast: edge
+
+  - name: host5
+    rack: BLD2-FL2
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld2-fl2-idf]
+        vlans: 202
+        mode: access
+        spanning_tree_portfast: edge
+
+  - name: guest2
+    rack: BLD2-FL3
+    adapters:
+      - endpoint_ports: [eth1]
+        switch_ports: [Ethernet3]
+        switches: [bld2-fl3-idf]
+        vlans: 255
+        mode: access
+        spanning_tree_portfast: edge
+
+  # ── Building 3 servers (LACP bond, EVPN ESI active-active) ─────────────────
+  - name: server-1
+    rack: BLD3-SVC
+    adapters:
+      - endpoint_ports: [eth1, eth2]
+        switch_ports: [Ethernet3, Ethernet3]
+        switches: [bld3-svc-1, bld3-svc-2]
+        vlans: 310
+        mode: access
+        spanning_tree_portfast: edge
+        port_channel:
+          endpoint_port_channel: Bond1
+          mode: active
+          short_esi: "0303:0101:0101"
+
+  - name: dmz-server
+    rack: BLD3-SVC
+    adapters:
+      - endpoint_ports: [eth1, eth2]
+        switch_ports: [Ethernet4, Ethernet4]
+        switches: [bld3-svc-1, bld3-svc-2]
+        vlans: 255
+        mode: access
+        spanning_tree_portfast: edge
+        port_channel:
+          endpoint_port_channel: Bond1
+          mode: active
+          short_esi: "0303:0202:0202"

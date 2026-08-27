@@ -1,0 +1,64 @@
+---
+### group_vars/CAMPUS_FABRIC.yml
+
+# Set the Fabric Name - must match an Ansible Inventory Group
+fabric_name: CAMPUS
+
+# Documentation
+eos_designs_documentation:
+  connected_endpoints: true
+  topology_csv: true
+  p2p_links_csv: true
+
+# Define underlay and overlay routing protocol to be used
+underlay_routing_protocol: ebgp
+overlay_routing_protocol: ebgp
+
+# BGP peer group passwords (value "arista")
+bgp_peer_groups:
+  evpn_overlay_peers:
+    password: Q4fqtbqcZ7oQuKfuWtNGRQ==
+  ipv4_underlay_peers:
+    password: 7x4B4rnJhZB438m9+BrBfQ==
+
+# DNS servers
+dns_settings:
+  servers:
+    - ip_address: 8.8.4.4
+    - ip_address: 8.8.8.8
+
+# NTP servers
+ntp_settings:
+  server_vrf: use_mgmt_interface_vrf
+  servers:
+    - name: time.google.com
+    - name: pool.ntp.org
+
+# AAA settings
+aaa_settings:
+  local_users:
+    - name: arista
+      privilege: 15
+      role: network-admin
+      sha512_password: $6$Ap6u4I1WR/jMoNKe$LPLoHgIXFg5kiGPDWGF0w5lVVuOZZ4T15cIBbNxE2ykqh98uVvsi9jPdybkbTXBTZFzi3haaPJVaGVwnpuck40
+    - name: admin
+      privilege: 15
+      role: network-admin
+      sha512_password: $6$eucN5ngreuExDgwS$xnD7T8jO..GBDX0DUlp.hn.W7yW94xTjSanqgaQGBzPIhDAsyAl9N4oScHvOMvf07uVBFI4mKMxwdVEUVKgY/.
+  authorization:
+    exec:
+      default: local
+  authentication:
+    policies:
+      local:
+        allow_nopassword: false
+
+# Ansible connectivity via eAPI (HTTPS)
+ansible_connection: ansible.netcommon.httpapi
+ansible_network_os: arista.eos.eos
+ansible_user: arista
+ansible_password: arista
+ansible_become: true
+ansible_become_method: enable
+ansible_httpapi_use_ssl: true
+ansible_httpapi_validate_certs: false

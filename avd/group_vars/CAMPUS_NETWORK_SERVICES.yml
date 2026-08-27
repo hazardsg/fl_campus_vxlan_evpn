@@ -1,0 +1,63 @@
+---
+### group_vars/CAMPUS_NETWORK_SERVICES.yml
+
+tenants:
+  - name: CAMPUS_TENANT
+    mac_vrf_vni_base: 10000
+
+    vrfs:
+      # ── CAMPUS VRF ──────────────────────────────────────────────────────────
+      # All corporate employee segments and shared services.
+      # Building-to-building routing is permitted within this VRF.
+      - name: CAMPUS
+        vrf_vni: 10
+        vtep_diagnostic:
+          loopback: 10
+          loopback_ip_range: 10.255.10.0/27
+
+        svis:
+          - id: 101
+            name: BLD1_FL1_EMPLOYEES
+            enabled: true
+            ip_address_virtual: 10.1.101.1/24
+            tags: [bld1-fl1]
+
+          - id: 201
+            name: BLD1_FL2_EMPLOYEES
+            enabled: true
+            ip_address_virtual: 10.1.201.1/24
+            tags: [bld1-fl2]
+
+          - id: 102
+            name: BLD2_FL1_EMPLOYEES
+            enabled: true
+            ip_address_virtual: 10.2.101.1/24
+            tags: [bld2-fl1]
+
+          - id: 202
+            name: BLD2_FL2_EMPLOYEES
+            enabled: true
+            ip_address_virtual: 10.2.201.1/24
+            tags: [bld2-fl2]
+
+          - id: 310
+            name: SHARED_SERVICES
+            enabled: true
+            ip_address_virtual: 10.3.100.1/24
+            tags: [bld3-svc]
+
+      # ── DMZ VRF ─────────────────────────────────────────────────────────────
+      # Guest and DMZ segment. Isolated from CAMPUS VRF.
+      # VLAN 255 is stretched across both building guest IDFs and SVC switches.
+      - name: DMZ
+        vrf_vni: 20
+        vtep_diagnostic:
+          loopback: 20
+          loopback_ip_range: 10.255.20.0/27
+
+        svis:
+          - id: 255
+            name: GUEST_DMZ
+            enabled: true
+            ip_address_virtual: 10.0.255.1/24
+            tags: [bld1-fl3, bld2-fl3, bld3-svc]

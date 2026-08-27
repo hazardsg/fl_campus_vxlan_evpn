@@ -1,0 +1,11 @@
+---
+### group_vars/CAMPUS.yml
+
+# OOB Management network default gateway
+mgmt_gateway: 172.100.100.1
+
+# cEOS/vEOS MTU caveat — keep P2P links at 1500
+p2p_uplinks_mtu: 1500
+
+management_eapi:
+  enabled: true

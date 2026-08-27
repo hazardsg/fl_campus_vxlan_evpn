@@ -1,0 +1,87 @@
+---
+### group_vars/CAMPUS_IDF_VTEPS.yml
+# IDF access switches — single-node VTEPs, no MLAG.
+# Underlay eBGP peers: building distribution pair
+# Overlay EVPN peers: cores directly (multi-hop eBGP, ebgp-multihop 3)
+
+type: l3leaf
+
+l3leaf:
+  defaults:
+    platform: cEOSLab
+    loopback_ipv4_pool: 10.255.0.64/27
+    vtep_loopback_ipv4_pool: 10.255.1.0/27
+    uplink_interfaces: [Ethernet1, Ethernet2]
+    uplink_ipv4_pool: 10.255.255.32/27
+    virtual_router_mac_address: 00:1c:73:00:00:99
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 16384
+    # Direct EVPN sessions to core route reflectors, bypassing distribution transit
+    evpn_route_servers: [bld3-core-1, bld3-core-2]
+
+  node_groups:
+    - group: BLD1-FL1-IDF
+      bgp_as: 65101
+      uplink_switches: [bld1-dist-1, bld1-dist-2]
+      nodes:
+        - name: bld1-fl1-idf
+          id: 1
+          mgmt_ip: 172.100.100.21/24
+          uplink_switch_interfaces: [Ethernet3, Ethernet3]
+          filter:
+            tags: [bld1-fl1]
+
+    - group: BLD1-FL2-IDF
+      bgp_as: 65102
+      uplink_switches: [bld1-dist-1, bld1-dist-2]
+      nodes:
+        - name: bld1-fl2-idf
+          id: 2
+          mgmt_ip: 172.100.100.22/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet4]
+          filter:
+            tags: [bld1-fl2]
+
+    - group: BLD1-FL3-IDF
+      bgp_as: 65103
+      uplink_switches: [bld1-dist-1, bld1-dist-2]
+      nodes:
+        - name: bld1-fl3-idf
+          id: 3
+          mgmt_ip: 172.100.100.23/24
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
+          filter:
+            tags: [bld1-fl3]
+
+    - group: BLD2-FL1-IDF
+      bgp_as: 65104
+      uplink_switches: [bld2-dist-1, bld2-dist-2]
+      nodes:
+        - name: bld2-fl1-idf
+          id: 4
+          mgmt_ip: 172.100.100.24/24
+          uplink_switch_interfaces: [Ethernet3, Ethernet3]
+          filter:
+            tags: [bld2-fl1]
+
+    - group: BLD2-FL2-IDF
+      bgp_as: 65105
+      uplink_switches: [bld2-dist-1, bld2-dist-2]
+      nodes:
+        - name: bld2-fl2-idf
+          id: 5
+          mgmt_ip: 172.100.100.25/24
+          uplink_switch_interfaces: [Ethernet4, Ethernet4]
+          filter:
+            tags: [bld2-fl2]
+
+    - group: BLD2-FL3-IDF
+      bgp_as: 65106
+      uplink_switches: [bld2-dist-1, bld2-dist-2]
+      nodes:
+        - name: bld2-fl3-idf
+          id: 6
+          mgmt_ip: 172.100.100.26/24
+          uplink_switch_interfaces: [Ethernet5, Ethernet5]
+          filter:
+            tags: [bld2-fl3]
