@@ -77,6 +77,7 @@ servers:
         port_channel:
           endpoint_port_channel: Bond1
           mode: active
+        ethernet_segment:
           short_esi: "0303:0101:0101"
 
   - name: dmz-server
@@ -91,4 +92,5 @@ servers:
         port_channel:
           endpoint_port_channel: Bond1
           mode: active
+        ethernet_segment:
           short_esi: "0303:0202:0202"
