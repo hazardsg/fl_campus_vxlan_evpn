@@ -1,0 +1,17 @@
+# Ansible core — must be >=2.15 and <2.18 for AVD 6.x
+ansible-core>=2.15.0,<2.18.0
+
+# AVD 6.x Python requirements
+cryptography>=38.0.4
+Jinja2>=3.0,<4.0
+jsonschema[format-annotations]>=4.10.3
+netaddr>=0.7.19,<1.0.0
+netutils>=1.6.0
+pyOpenSSL>=22.1.0
+pyeapi>=0.9.0
+referencing>=0.28.4
+requests>=2.27.0
+tqdm>=4.27.0
+
+# SSH transport
+paramiko>=2.11.0

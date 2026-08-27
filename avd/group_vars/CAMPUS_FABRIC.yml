@@ -4,6 +4,13 @@
 # Set the Fabric Name - must match an Ansible Inventory Group
 fabric_name: CAMPUS
 
+# ANTA catalog filter — exclude BGP neighbor detail tests that require
+# 'show bgp neighbors vrf all' revision 3, which is not available on cEOS 4.36.x.
+# These tests require EOS 4.37+. Remove this filter when upgrading cEOS.
+anta_catalog_filters:
+  tests:
+    - VerifyBGPPeerMPCaps
+
 # Documentation
 eos_designs_documentation:
   connected_endpoints: true
