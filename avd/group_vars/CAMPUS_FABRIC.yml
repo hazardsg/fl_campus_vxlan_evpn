@@ -21,6 +21,15 @@ bgp_peer_groups:
   ipv4_underlay_peers:
     password: 7x4B4rnJhZB438m9+BrBfQ==
 
+# cEOS-Lab uses Management0, not the default Management1
+custom_platform_settings:
+  - platforms:
+      - CEOS
+      - cEOS
+      - ceos
+      - cEOSLab
+    management_interface: Management0
+
 # DNS servers
 dns_settings:
   servers:
