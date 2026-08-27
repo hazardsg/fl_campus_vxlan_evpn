@@ -93,14 +93,6 @@ topology:
         IPV4: 10.2.201.10/24
         GW: 10.2.201.1
         UPLINK_MAC: 00:01:01:00:00:05
-    server-2:
-      kind: linux
-      image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
-      env:
-        IPV4: 10.3.200.10/24
-        GW: 10.3.200.1
-        UPLINK_MAC: 00:01:01:00:00:08
-        TMODE: lacp
     server-1:
       kind: linux
       image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
@@ -123,6 +115,14 @@ topology:
         IPV4: 10.0.255.11/24
         GW: 10.0.255.1
         UPLINK_MAC: 00:01:01:00:00:06
+    dmz-server:
+      kind: linux
+      image: ghcr.io/aristanetworks/aclabs/host-ubuntu:rev1.6
+      env:
+        IPV4: 10.0.255.100/24
+        GW: 10.0.255.1
+        UPLINK_MAC: 00:01:01:00:00:08
+        TMODE: lacp
   links:
     [
       { endpoints: [ "bld3-core-1:et1", "bld1-dist-1:et1" ] },
@@ -156,7 +156,7 @@ topology:
       { endpoints: [ "bld2-fl2-idf:et3", "host5:eth1" ] },
       { endpoints: [ "bld2-fl3-idf:et3", "guest2:eth1" ] },
       { endpoints: [ "bld3-svc-1:et3", "server-1:eth1" ] },
-      { endpoints: [ "bld3-svc-1:et4", "server-2:eth1" ] },
+      { endpoints: [ "bld3-svc-1:et4", "dmz-server:eth1" ] },
       { endpoints: [ "bld3-svc-2:et3", "server-1:eth2" ] },
-      { endpoints: [ "bld3-svc-2:et4", "server-2:eth2" ] }
+      { endpoints: [ "bld3-svc-2:et4", "dmz-server:eth2" ] }
     ]

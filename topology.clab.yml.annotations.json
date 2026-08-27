@@ -107,7 +107,7 @@
     },
     {
       "id": "freeText_1787844418730-6-1",
-      "text": "10.3.200.10/24",
+      "text": "10.0.255.100",
       "position": {
         "x": 1599.3937006742997,
         "y": -64.51341614424857
@@ -337,7 +337,7 @@
       "interfacePattern": "eth{n}"
     },
     {
-      "id": "server-2",
+      "id": "dmz-server",
       "position": {
         "x": 1620,
         "y": -20
@@ -601,24 +601,6 @@
       "endpointLabelOffset": 30
     },
     {
-      "id": "Clab-Link31",
-      "source": "bld3-svc-1",
-      "target": "server-2",
-      "sourceEndpoint": "et4",
-      "targetEndpoint": "eth1",
-      "endpointLabelOffsetEnabled": true,
-      "endpointLabelOffset": 30
-    },
-    {
-      "id": "Clab-Link33",
-      "source": "bld3-svc-2",
-      "target": "server-2",
-      "sourceEndpoint": "et4",
-      "targetEndpoint": "eth2",
-      "endpointLabelOffsetEnabled": true,
-      "endpointLabelOffset": 30
-    },
-    {
       "id": "Clab-Link30",
       "source": "bld3-svc-1",
       "target": "server-1",
@@ -651,6 +633,24 @@
       "target": "guest2",
       "sourceEndpoint": "et3",
       "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link31",
+      "source": "bld3-svc-1",
+      "target": "dmz-server",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link33",
+      "source": "bld3-svc-2",
+      "target": "dmz-server",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "eth2",
       "endpointLabelOffsetEnabled": true,
       "endpointLabelOffset": 30
     }
