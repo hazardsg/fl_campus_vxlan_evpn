@@ -1,0 +1,660 @@
+{
+  "freeTextAnnotations": [
+    {
+      "id": "freeText_1787844418730",
+      "text": "10.1.101.10/24",
+      "position": {
+        "x": 1292.6691616749629,
+        "y": 711.6450264534781
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-1",
+      "text": "10.1.201.10/24",
+      "position": {
+        "x": 1398.0477673142586,
+        "y": 711.4929916556129
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-2",
+      "text": "10.0.255.10/24",
+      "position": {
+        "x": 1488.9029407088294,
+        "y": 711.2176854000189
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-3",
+      "text": "10.2.101.10/24",
+      "position": {
+        "x": 1579.632788121376,
+        "y": 711.7765160083886
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-4",
+      "text": "10.2.201.10/24",
+      "position": {
+        "x": 1675.983814006347,
+        "y": 712.0867491770056
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-5",
+      "text": "10.0.255.11/24",
+      "position": {
+        "x": 1777.0479186251416,
+        "y": 712.3743825783723
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-6",
+      "text": "10.3.100.10/24",
+      "position": {
+        "x": 1496.572702131933,
+        "y": -62.09822314950459
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    },
+    {
+      "id": "freeText_1787844418730-6-1",
+      "text": "10.3.200.10/24",
+      "position": {
+        "x": 1599.3937006742997,
+        "y": -64.51341614424857
+      },
+      "fontSize": 12,
+      "fontColor": "#3b3b3b",
+      "fontWeight": "normal",
+      "fontStyle": "normal",
+      "textDecoration": "none",
+      "textAlign": "left",
+      "fontFamily": "Arial"
+    }
+  ],
+  "freeShapeAnnotations": [],
+  "trafficRateAnnotations": [],
+  "groupStyleAnnotations": [],
+  "networkNodeAnnotations": [],
+  "nodeAnnotations": [
+    {
+      "id": "bld3-core-1",
+      "position": {
+        "x": 1480,
+        "y": 240
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld3-core-2",
+      "position": {
+        "x": 1660,
+        "y": 240
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld1-dist-1",
+      "position": {
+        "x": 1360,
+        "y": 380
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld1-dist-2",
+      "position": {
+        "x": 1480,
+        "y": 380
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld2-dist-1",
+      "position": {
+        "x": 1640,
+        "y": 380
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld2-dist-2",
+      "position": {
+        "x": 1760,
+        "y": 380
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld1-fl2-idf",
+      "position": {
+        "x": 1420,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld1-fl1-idf",
+      "position": {
+        "x": 1320,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld1-fl3-idf",
+      "position": {
+        "x": 1520,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld2-fl1-idf",
+      "position": {
+        "x": 1600,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld2-fl2-idf",
+      "position": {
+        "x": 1700,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld2-fl3-idf",
+      "position": {
+        "x": 1800,
+        "y": 540
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld3-svc-1",
+      "position": {
+        "x": 1520,
+        "y": 100
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "bld3-svc-2",
+      "position": {
+        "x": 1620,
+        "y": 100
+      },
+      "icon": "switch",
+      "iconColor": "#16325b",
+      "interfacePattern": "et{n}"
+    },
+    {
+      "id": "host1",
+      "position": {
+        "x": 1320,
+        "y": 660
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "host2",
+      "position": {
+        "x": 1420,
+        "y": 660
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "guest1",
+      "position": {
+        "x": 1520,
+        "y": 660
+      },
+      "icon": "ue",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "host4",
+      "position": {
+        "x": 1600,
+        "y": 660
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "host5",
+      "position": {
+        "x": 1700,
+        "y": 660
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "guest2",
+      "position": {
+        "x": 1800,
+        "y": 660
+      },
+      "icon": "ue",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "server-1",
+      "position": {
+        "x": 1520,
+        "y": -20
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    },
+    {
+      "id": "server-2",
+      "position": {
+        "x": 1620,
+        "y": -20
+      },
+      "icon": "client",
+      "iconColor": "#16325b",
+      "interfacePattern": "eth{n}"
+    }
+  ],
+  "edgeAnnotations": [
+    {
+      "id": "Clab-Link8",
+      "source": "bld1-dist-1",
+      "target": "bld1-fl1-idf",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link9",
+      "source": "bld1-dist-1",
+      "target": "bld1-fl2-idf",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link10",
+      "source": "bld1-dist-1",
+      "target": "bld1-fl3-idf",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link11",
+      "source": "bld1-dist-2",
+      "target": "bld1-fl1-idf",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link12",
+      "source": "bld1-dist-2",
+      "target": "bld1-fl2-idf",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link13",
+      "source": "bld1-dist-2",
+      "target": "bld1-fl3-idf",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link14",
+      "source": "bld2-dist-1",
+      "target": "bld2-fl1-idf",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link15",
+      "source": "bld2-dist-1",
+      "target": "bld2-fl2-idf",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link16",
+      "source": "bld2-dist-1",
+      "target": "bld2-fl3-idf",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link17",
+      "source": "bld2-dist-2",
+      "target": "bld2-fl1-idf",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link18",
+      "source": "bld2-dist-2",
+      "target": "bld2-fl2-idf",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link19",
+      "source": "bld2-dist-2",
+      "target": "bld2-fl3-idf",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link0",
+      "source": "bld3-core-1",
+      "target": "bld1-dist-1",
+      "sourceEndpoint": "et1",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link1",
+      "source": "bld3-core-1",
+      "target": "bld1-dist-2",
+      "sourceEndpoint": "et2",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link2",
+      "source": "bld3-core-1",
+      "target": "bld2-dist-1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link3",
+      "source": "bld3-core-1",
+      "target": "bld2-dist-2",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link4",
+      "source": "bld3-core-2",
+      "target": "bld1-dist-1",
+      "sourceEndpoint": "et1",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link5",
+      "source": "bld3-core-2",
+      "target": "bld1-dist-2",
+      "sourceEndpoint": "et2",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link6",
+      "source": "bld3-core-2",
+      "target": "bld2-dist-1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link7",
+      "source": "bld3-core-2",
+      "target": "bld2-dist-2",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link20",
+      "source": "bld3-core-1",
+      "target": "bld3-svc-1",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link21",
+      "source": "bld3-core-1",
+      "target": "bld3-svc-2",
+      "sourceEndpoint": "et6",
+      "targetEndpoint": "et1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link22",
+      "source": "bld3-core-2",
+      "target": "bld3-svc-1",
+      "sourceEndpoint": "et5",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link23",
+      "source": "bld3-core-2",
+      "target": "bld3-svc-2",
+      "sourceEndpoint": "et6",
+      "targetEndpoint": "et2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link24",
+      "source": "bld1-fl1-idf",
+      "target": "host1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link25",
+      "source": "bld1-fl2-idf",
+      "target": "host2",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link27",
+      "source": "bld2-fl1-idf",
+      "target": "host4",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link28",
+      "source": "bld2-fl2-idf",
+      "target": "host5",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link31",
+      "source": "bld3-svc-1",
+      "target": "server-2",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link33",
+      "source": "bld3-svc-2",
+      "target": "server-2",
+      "sourceEndpoint": "et4",
+      "targetEndpoint": "eth2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link30",
+      "source": "bld3-svc-1",
+      "target": "server-1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link32",
+      "source": "bld3-svc-2",
+      "target": "server-1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth2",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link26",
+      "source": "bld1-fl3-idf",
+      "target": "guest1",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    },
+    {
+      "id": "Clab-Link29",
+      "source": "bld2-fl3-idf",
+      "target": "guest2",
+      "sourceEndpoint": "et3",
+      "targetEndpoint": "eth1",
+      "endpointLabelOffsetEnabled": true,
+      "endpointLabelOffset": 30
+    }
+  ],
+  "aliasEndpointAnnotations": [],
+  "viewerSettings": {}
+}
