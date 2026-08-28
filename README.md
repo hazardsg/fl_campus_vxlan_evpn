@@ -1,6 +1,6 @@
 # Campus VXLAN EVPN Lab
 
-A virtual campus network lab running Arista cEOS-Lab containers via [Containerlab](https://containerlab.dev), configured end-to-end by [Arista AVD](https://avd.arista.com/6.3/index.html) (Ansible Validated Designs). The topology models a two-building campus fabric with VXLAN/EVPN overlay, distributed L3 gateways, and ESI active-active multi-homing for shared services servers.
+A virtual campus network lab running Arista cEOS-Lab containers via [Containerlab](https://containerlab.dev), configured end-to-end by [Arista AVD](https://avd.arista.com/6.4/index.html) (Ansible Validated Designs). The topology models a two-building campus fabric with VXLAN/EVPN overlay, distributed L3 gateways, and ESI active-active multi-homing for shared services servers.
 
 ## Topology
 
@@ -12,7 +12,7 @@ A virtual campus network lab running Arista cEOS-Lab containers via [Containerla
 |---|---|---|
 | **Core (Building 3)** | `bld3-core-1`, `bld3-core-2` | BGP spines, EVPN route reflectors — underlay only, not VTEPs |
 | **Distribution** | `bld1-dist-1/2`, `bld2-dist-1/2` | L3 underlay transit — not VTEPs, no EVPN participation |
-| **IDF VTEPs** | `bld1-fl1/fl2/fl3-idf`, `bld2-fl1/fl2/fl3-idf` | Single-node VTEPs, per-floor L3 gateway |
+| **IDF VTEPs** | `bld1-fl1/fl2/fl3-idf`, `bld2-fl1/fl2/fl3-idf` | Single-node VTEPs — each floor carries both building department VLANs + guest |
 | **Service VTEPs** | `bld3-svc-1`, `bld3-svc-2` | VTEPs with EVPN ESI active-active multi-homing |
 
 **BGP design:** eBGP underlay (IDF ↔ distribution ↔ core), multi-hop eBGP EVPN overlay (IDF ↔ core, bypassing distribution layer).
@@ -23,10 +23,10 @@ Department VLANs are stretched across **all three floors of each building**. Eve
 
 | VRF | VLAN | Subnet | Gateway | Name | VTEPs |
 |---|---|---|---|---|---|
-| CAMPUS | 101 | 10.1.101.0/24 | 10.1.101.1 | BLD1 Marketing | All 3 Building 1 IDFs |
-| CAMPUS | 201 | 10.1.201.0/24 | 10.1.201.1 | BLD1 Accounting | All 3 Building 1 IDFs |
-| CAMPUS | 102 | 10.2.101.0/24 | 10.2.101.1 | BLD2 Marketing | All 3 Building 2 IDFs |
-| CAMPUS | 202 | 10.2.201.0/24 | 10.2.201.1 | BLD2 Accounting | All 3 Building 2 IDFs |
+| CAMPUS | 1101 | 10.1.101.0/24 | 10.1.101.1 | Marketing | All 3 Building 1 IDFs |
+| CAMPUS | 1201 | 10.1.201.0/24 | 10.1.201.1 | Accounting | All 3 Building 1 IDFs |
+| CAMPUS | 2101 | 10.2.101.0/24 | 10.2.101.1 | HR | All 3 Building 2 IDFs |
+| CAMPUS | 2201 | 10.2.201.0/24 | 10.2.201.1 | Engineering | All 3 Building 2 IDFs |
 | CAMPUS | 310 | 10.3.100.0/24 | 10.3.100.1 | Shared Services | bld3-svc-1/2 |
 | DMZ | 255 | 10.0.255.0/24 | 10.0.255.1 | Guest/DMZ | All IDFs + bld3-svc-1/2 |
 
@@ -62,7 +62,7 @@ containerlab version
 
 **Import** the image into Docker:
 ```bash
-docker import cEOS-lab-4.35.0F.tar.xz arista/ceos:latest
+docker import cEOS-lab-4.36.2F.tar.xz arista/ceos:latest
 ```
 
 Verify:
@@ -70,7 +70,7 @@ Verify:
 docker images | grep ceos
 ```
 
-> This lab was validated with **cEOS-lab 4.35.0F+**.
+> This lab was validated with **cEOS-lab 4.36.2F**. EOS 4.36.x removed revision 3 of `show bgp neighbors` — ensure you are using AVD 6.4.0+ (bundled ANTA 1.9.0+) which handles this correctly.
 
 ### 4. Python 3.10+
 
@@ -101,7 +101,7 @@ ansible-galaxy collection list | grep arista.avd   # verify
 deactivate
 ```
 
-> This lab was validated with **AVD 6.3.0** and **ansible-core 2.15+**.
+> This lab was validated with **AVD 6.4.0** and **ansible-core 2.15+**. ANTA 1.9.0 is pinned in `requirements.txt` — do not downgrade.
 
 ---
 
@@ -329,7 +329,21 @@ cEOS can take 2–3 minutes to fully boot and load startup configs. Run `make in
 The `arista` user (password `arista`) must exist on the device. This is configured by the init-configs in `clab/init-configs/`. If a node was restarted without its init-config, SSH to it as `admin` and verify `show running-config | section username`.
 
 **`make build` fails with schema validation errors**
-Ensure AVD 6.x is installed. Earlier versions have different schemas. Run `ansible-galaxy collection list | grep arista.avd` to verify.
+Ensure AVD 6.4.0+ is installed. Run `ansible-galaxy collection list | grep arista.avd` to verify.
+
+**`make validate` — ANTA test failures explained**
+The following two tests are intentionally suppressed in `CAMPUS_FABRIC.yml` via `anta_catalog_filters` because they are cEOS-Lab artifacts, not real fabric issues:
+
+| Test | Reason suppressed |
+|---|---|
+| `VerifyInterfaceDiscards` | Management0 always accumulates `inDiscards` from management bridge broadcast traffic (ARP, mDNS). This is expected and harmless. |
+| `VerifyLoggingErrors` | cEOS-Lab always logs `HARDWARE-0-SYSTEM_IDENTIFICATION_FAILED` at boot — it has no physical hardware to identify. |
+
+**`make validate` — `show bgp neighbors vrf all` revision error**
+This error (`no such revision 3, most current is 2`) occurs when using AVD 6.3.0 with cEOS 4.36.x. EOS 4.36 removed revision 3 of this command. AVD 6.4.0 (ANTA 1.9.0) fixes this. Ensure `make setup` was run after upgrading — it installs ANTA 1.9.0 as pinned in `requirements.txt`.
+
+**NTP not synchronising**
+NTP servers are configured as IPs (`216.239.35.0`, `216.239.35.4`, `129.6.15.28`) to avoid DNS dependency inside the cEOS MGMT VRF. If NTP still shows unsynchronised immediately after deploy, wait 3–5 minutes — NTP sync takes time after boot.
 
 **Cross-VLAN pings fail from Linux hosts**
-Verify the host has a route for `10.0.0.0/8` via its data interface: `ip route show`. The `STATIC_ROUTE: 10.0.0.0/8` env var in the topology configures this automatically on start.
+Verify the host has a route for `10.0.0.0/8` via its data interface: `ip route show`. The `STATIC_ROUTE: 10.0.0.0/8` env var in the topology configures this automatically on container start. If missing, run `ip route add 10.0.0.0/8 via <gateway> dev eth1` on the affected host.

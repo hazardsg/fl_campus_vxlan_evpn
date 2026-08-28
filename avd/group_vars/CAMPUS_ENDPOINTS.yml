@@ -9,7 +9,7 @@ servers:
       - endpoint_ports: [eth1]
         switch_ports: [Ethernet3]
         switches: [bld1-fl1-idf]
-        vlans: 101
+        vlans: 1101
         mode: access
         spanning_tree_portfast: edge
 
@@ -19,7 +19,7 @@ servers:
       - endpoint_ports: [eth1]
         switch_ports: [Ethernet3]
         switches: [bld1-fl2-idf]
-        vlans: 201
+        vlans: 1201
         mode: access
         spanning_tree_portfast: edge
 
@@ -40,7 +40,7 @@ servers:
       - endpoint_ports: [eth1]
         switch_ports: [Ethernet3]
         switches: [bld2-fl1-idf]
-        vlans: 102
+        vlans: 2101
         mode: access
         spanning_tree_portfast: edge
 
@@ -50,7 +50,7 @@ servers:
       - endpoint_ports: [eth1]
         switch_ports: [Ethernet3]
         switches: [bld2-fl2-idf]
-        vlans: 202
+        vlans: 2201
         mode: access
         spanning_tree_portfast: edge
 

@@ -18,26 +18,26 @@ tenants:
           loopback_ip_range: 10.255.10.0/27
 
         svis:
-          - id: 101
-            name: BLD1_MARKETING
+          - id: 1101
+            name: MARKETING
             enabled: true
             ip_address_virtual: 10.1.101.1/24
             tags: [bld1]          # all three floors of Building 1
 
-          - id: 201
-            name: BLD1_ACCOUNTING
+          - id: 1201
+            name: ACCOUNTING
             enabled: true
             ip_address_virtual: 10.1.201.1/24
             tags: [bld1]          # all three floors of Building 1
 
-          - id: 102
-            name: BLD2_MARKETING
+          - id: 2101
+            name: HR
             enabled: true
             ip_address_virtual: 10.2.101.1/24
             tags: [bld2]          # all three floors of Building 2
 
-          - id: 202
-            name: BLD2_ACCOUNTING
+          - id: 2201
+            name: ENGINEERING
             enabled: true
             ip_address_virtual: 10.2.201.1/24
             tags: [bld2]          # all three floors of Building 2
