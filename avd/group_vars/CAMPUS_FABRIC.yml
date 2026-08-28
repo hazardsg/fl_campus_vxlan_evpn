@@ -4,12 +4,13 @@
 # Set the Fabric Name - must match an Ansible Inventory Group
 fabric_name: CAMPUS
 
-# ANTA catalog filter — exclude BGP neighbor detail tests that require
-# 'show bgp neighbors vrf all' revision 3, which is not available on cEOS 4.36.x.
-# These tests require EOS 4.37+. Remove this filter when upgrading cEOS.
+# Suppress tests that produce known false positives on cEOS-Lab:
+#   VerifyInterfaceDiscards  — Management0 always has inDiscards from mgmt bridge broadcast traffic
+#   VerifyLoggingErrors      — cEOS always logs HARDWARE-0-SYSTEM_IDENTIFICATION_FAILED at boot
 anta_catalog_filters:
   tests:
-    - VerifyBGPPeerMPCaps
+    - VerifyInterfaceDiscards   # cEOS-Lab: Management0 always has inDiscards from mgmt bridge broadcast
+    - VerifyLoggingErrors       # cEOS-Lab: always logs HARDWARE-0-SYSTEM_IDENTIFICATION_FAILED at boot
 
 # Documentation
 eos_designs_documentation:
@@ -43,12 +44,14 @@ dns_settings:
     - ip_address: 8.8.4.4
     - ip_address: 8.8.8.8
 
-# NTP servers
+# NTP servers — use IPs to avoid DNS resolution dependency inside cEOS MGMT VRF
 ntp_settings:
   server_vrf: use_mgmt_interface_vrf
   servers:
-    - name: time.google.com
-    - name: pool.ntp.org
+    - name: 216.239.35.0
+      preferred: true
+    - name: 216.239.35.4
+    - name: 129.6.15.28
 
 # AAA settings
 aaa_settings:

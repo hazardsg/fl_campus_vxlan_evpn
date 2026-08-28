@@ -7,7 +7,9 @@ tenants:
 
     vrfs:
       # ── CAMPUS VRF ──────────────────────────────────────────────────────────
-      # All corporate employee segments and shared services.
+      # Corporate employee and shared services segments.
+      # Department VLANs are stretched across ALL three floors of each building
+      # so every IDF VTEP has remote peers in every VLAN (no empty flood lists).
       # Building-to-building routing is permitted within this VRF.
       - name: CAMPUS
         vrf_vni: 10
@@ -17,28 +19,28 @@ tenants:
 
         svis:
           - id: 101
-            name: BLD1_FL1_EMPLOYEES
+            name: BLD1_MARKETING
             enabled: true
             ip_address_virtual: 10.1.101.1/24
-            tags: [bld1-fl1]
+            tags: [bld1]          # all three floors of Building 1
 
           - id: 201
-            name: BLD1_FL2_EMPLOYEES
+            name: BLD1_ACCOUNTING
             enabled: true
             ip_address_virtual: 10.1.201.1/24
-            tags: [bld1-fl2]
+            tags: [bld1]          # all three floors of Building 1
 
           - id: 102
-            name: BLD2_FL1_EMPLOYEES
+            name: BLD2_MARKETING
             enabled: true
             ip_address_virtual: 10.2.101.1/24
-            tags: [bld2-fl1]
+            tags: [bld2]          # all three floors of Building 2
 
           - id: 202
-            name: BLD2_FL2_EMPLOYEES
+            name: BLD2_ACCOUNTING
             enabled: true
             ip_address_virtual: 10.2.201.1/24
-            tags: [bld2-fl2]
+            tags: [bld2]          # all three floors of Building 2
 
           - id: 310
             name: SHARED_SERVICES
@@ -48,7 +50,8 @@ tenants:
 
       # ── DMZ VRF ─────────────────────────────────────────────────────────────
       # Guest and DMZ segment. Isolated from CAMPUS VRF.
-      # VLAN 255 is stretched across both building guest IDFs and SVC switches.
+      # VLAN 255 is stretched across all IDFs (all buildings, all floors)
+      # and the SVC switches, giving every VTEP remote flood-list peers.
       - name: DMZ
         vrf_vni: 20
         vtep_diagnostic:
@@ -60,4 +63,4 @@ tenants:
             name: GUEST_DMZ
             enabled: true
             ip_address_virtual: 10.0.255.1/24
-            tags: [bld1-fl3, bld2-fl3, bld3-svc]
+            tags: [guest-dmz]     # all IDFs + SVC VTEPs

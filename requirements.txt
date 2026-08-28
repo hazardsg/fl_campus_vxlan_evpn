@@ -15,3 +15,7 @@ tqdm>=4.27.0
 
 # SSH transport
 paramiko>=2.11.0
+
+# ANTA 1.9+ required — fixes 'show bgp neighbors vrf all' revision 3 error on EOS 4.36.x
+# (AVD 6.4.0 upgraded from ANTA 1.8.0 → 1.9.0 specifically for this fix)
+anta>=1.9.0

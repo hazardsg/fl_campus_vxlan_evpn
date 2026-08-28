@@ -19,14 +19,16 @@ A virtual campus network lab running Arista cEOS-Lab containers via [Containerla
 
 ### VRFs and Networks
 
-| VRF | VLAN | Subnet | Gateway | Location |
-|---|---|---|---|---|
-| CAMPUS | 101 | 10.1.101.0/24 | 10.1.101.1 | Building 1 Floor 1 |
-| CAMPUS | 201 | 10.1.201.0/24 | 10.1.201.1 | Building 1 Floor 2 |
-| CAMPUS | 102 | 10.2.101.0/24 | 10.2.101.1 | Building 2 Floor 1 |
-| CAMPUS | 202 | 10.2.201.0/24 | 10.2.201.1 | Building 2 Floor 2 |
-| CAMPUS | 310 | 10.3.100.0/24 | 10.3.100.1 | Shared Services (Building 3) |
-| DMZ | 255 | 10.0.255.0/24 | 10.0.255.1 | Guest/DMZ — stretched across all buildings |
+Department VLANs are stretched across **all three floors of each building**. Every IDF VTEP carries both department VLANs for its building plus the guest VLAN, ensuring each VLAN has multiple remote VTEPs in its flood list.
+
+| VRF | VLAN | Subnet | Gateway | Name | VTEPs |
+|---|---|---|---|---|---|
+| CAMPUS | 101 | 10.1.101.0/24 | 10.1.101.1 | BLD1 Marketing | All 3 Building 1 IDFs |
+| CAMPUS | 201 | 10.1.201.0/24 | 10.1.201.1 | BLD1 Accounting | All 3 Building 1 IDFs |
+| CAMPUS | 102 | 10.2.101.0/24 | 10.2.101.1 | BLD2 Marketing | All 3 Building 2 IDFs |
+| CAMPUS | 202 | 10.2.201.0/24 | 10.2.201.1 | BLD2 Accounting | All 3 Building 2 IDFs |
+| CAMPUS | 310 | 10.3.100.0/24 | 10.3.100.1 | Shared Services | bld3-svc-1/2 |
+| DMZ | 255 | 10.0.255.0/24 | 10.0.255.1 | Guest/DMZ | All IDFs + bld3-svc-1/2 |
 
 ---
 

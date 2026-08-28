@@ -27,7 +27,7 @@ l3leaf:
           mgmt_ip: 172.100.100.31/24
           uplink_switch_interfaces: [Ethernet5, Ethernet5]
           filter:
-            tags: [bld3-svc]
+            tags: [bld3-svc, guest-dmz]
 
     - group: BLD3-SVC-2
       bgp_as: 65302
@@ -37,4 +37,4 @@ l3leaf:
           mgmt_ip: 172.100.100.32/24
           uplink_switch_interfaces: [Ethernet6, Ethernet6]
           filter:
-            tags: [bld3-svc]
+            tags: [bld3-svc, guest-dmz]

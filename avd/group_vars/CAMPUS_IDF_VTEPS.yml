@@ -3,6 +3,11 @@
 # IDF access switches — single-node VTEPs, no MLAG.
 # Underlay eBGP peers: building distribution pair
 # Overlay EVPN peers: cores directly (multi-hop eBGP, ebgp-multihop 3)
+#
+# Each IDF carries both department VLANs for its building (tag bld1 or bld2)
+# plus the guest VLAN stretched across all buildings (tag guest-dmz).
+# This ensures every VTEP has at least two remote peers per VLAN, which
+# satisfies the VXLAN flood-list config-sanity check.
 
 type: l3leaf
 
@@ -29,7 +34,7 @@ l3leaf:
           mgmt_ip: 172.100.100.21/24
           uplink_switch_interfaces: [Ethernet3, Ethernet3]
           filter:
-            tags: [bld1-fl1]
+            tags: [bld1, guest-dmz]
 
     - group: BLD1-FL2-IDF
       bgp_as: 65102
@@ -40,7 +45,7 @@ l3leaf:
           mgmt_ip: 172.100.100.22/24
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
           filter:
-            tags: [bld1-fl2]
+            tags: [bld1, guest-dmz]
 
     - group: BLD1-FL3-IDF
       bgp_as: 65103
@@ -51,7 +56,7 @@ l3leaf:
           mgmt_ip: 172.100.100.23/24
           uplink_switch_interfaces: [Ethernet5, Ethernet5]
           filter:
-            tags: [bld1-fl3]
+            tags: [bld1, guest-dmz]
 
     - group: BLD2-FL1-IDF
       bgp_as: 65104
@@ -62,7 +67,7 @@ l3leaf:
           mgmt_ip: 172.100.100.24/24
           uplink_switch_interfaces: [Ethernet3, Ethernet3]
           filter:
-            tags: [bld2-fl1]
+            tags: [bld2, guest-dmz]
 
     - group: BLD2-FL2-IDF
       bgp_as: 65105
@@ -73,7 +78,7 @@ l3leaf:
           mgmt_ip: 172.100.100.25/24
           uplink_switch_interfaces: [Ethernet4, Ethernet4]
           filter:
-            tags: [bld2-fl2]
+            tags: [bld2, guest-dmz]
 
     - group: BLD2-FL3-IDF
       bgp_as: 65106
@@ -84,4 +89,4 @@ l3leaf:
           mgmt_ip: 172.100.100.26/24
           uplink_switch_interfaces: [Ethernet5, Ethernet5]
           filter:
-            tags: [bld2-fl3]
+            tags: [bld2, guest-dmz]
