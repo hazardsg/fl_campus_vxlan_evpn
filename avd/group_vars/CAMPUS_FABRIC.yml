@@ -45,11 +45,11 @@ dns_settings:
     - ip_address: 8.8.8.8
 
 # NTP servers — use IPs to avoid DNS resolution dependency inside cEOS MGMT VRF
+# First entry is preferred; 'preferred' key is not valid in AVD 6.x ntp_settings schema.
 ntp_settings:
   server_vrf: use_mgmt_interface_vrf
   servers:
     - name: 216.239.35.0
-      preferred: true
     - name: 216.239.35.4
     - name: 129.6.15.28
 
